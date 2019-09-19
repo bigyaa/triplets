@@ -1,14 +1,15 @@
 const game = () => {
     // initialize
     let canvas = document.getElementById("canvas");
+
     canvas.width = window.innerWidth - 20;
     canvas.height = window.innerHeight - 20;
 
     const Engine = Matter.Engine,
         Render = Matter.Render,
         Bodies = Matter.Bodies,
+        Body = Matter.Body,
         World = Matter.World,
-        Composites = Matter.Composites,
         Mouse = Matter.Mouse,
         MouseConstraint = Matter.MouseConstraint,
         engine = Engine.create(),
@@ -17,30 +18,30 @@ const game = () => {
             engine: engine,
             options: {
                 width: canvas.width,
-                height: canvas.height
+                height: canvas.height,
+                wireframes: true
             }
         });
 
     // reverse gravity
-    engine.world.gravity.y = -1;
+    engine.world.gravity.y = -2;
 
     // add walls
     const walls = Boundaries(canvas, Bodies);
     World.add(engine.world, walls);
 
     // add obstacles
-    const triangles = [],
-        numOfTriangles = 25,
-        size = 33;
+    let size = 33,
+        xIncrement = randomNumber(size * 3, 100),
+        yIncrement = randomNumber(size * 3, 100);
+    const triangles = [];
 
-    for (let j = 1; j <= numOfTriangles; j++) {
-        triangles.push(
-            Triangle(
-                Bodies,
-                randomNumber(100, canvas.width - 100),
-                randomNumber(100, canvas.height - 100),
-                size)
-        );
+    for (let i = 100; i < canvas.width-50 ; i += xIncrement) {
+        for (let j = 50; j < canvas.height - 50; j += yIncrement) {
+            triangles.push(Triangle(Bodies, Body, i, j, size));
+            xIncrement = randomNumber(size * 3, 200);
+            yIncrement = randomNumber(size * 3, 200);
+        }
     }
     World.add(engine.world, triangles);
 
@@ -52,8 +53,8 @@ const game = () => {
     // players.push()
     //     }
 
-    World.add(engine.world, Bodies.circle(200, 200, 20, {
-        isStatic: false
+    World.add(engine.world, Bodies.circle(20, 20, 20, {
+        isStatic: false,
     }));
 
     console.log("eventss", Matter.Events)
