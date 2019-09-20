@@ -24,11 +24,11 @@ body{
 
 #canvas{
     position: fixed;
-    opacity: 0.6;
+    opacity: 0.2;
 }
 
 #box{
-    margin-left: 36%;
+    margin-left: 37.5%;
 }
 button{
     font-size: 20px;
