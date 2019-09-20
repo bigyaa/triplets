@@ -60,7 +60,10 @@ const game = () => {
 
   // add player shack
   const startingShack = Bodies.rectangle(50, 10, 100, 5, {
-    isStatic: true
+    isStatic: true,
+    render: {
+      fillStyle: "black"
+    }
   });
   const endingShack = Bodies.rectangle(
     canvas.width - 100,
@@ -68,7 +71,10 @@ const game = () => {
     200,
     5,
     {
-      isStatic: true
+      isStatic: true,
+      render: {
+        fillStyle: "black"
+      }
     }
   );
 
