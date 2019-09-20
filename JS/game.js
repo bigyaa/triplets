@@ -93,28 +93,27 @@ const game = () => {
   // check winning criteria
   const checkWinningCriteria = () => {
     let playerCount = players.length - 1;
-    let playerPosition = players[playerCount].position;
+    let playerPosition = players[0].position;
+    let loop;
+    let temp;
+    temp = players;
 
     if (
       playerPosition.x > endingShack.vertices[0].x &&
       playerPosition.y > endingShack.vertices[0].y
     ) {
       alert("its a wiiiiiiiiiiiiiin", endingShack);
-      World.remove(engine.world, players[playerCount])
+      //   World.remove(engine.world, players[playerCount]);
+      players.splice(playerCount, 1);
       cancelAnimationFrame(loop);
     }
-    let loop = requestAnimationFrame(checkWinningCriteria);
+
+    if (players.length == 3 || temp !== players) {
+        loop = requestAnimationFrame(checkWinningCriteria);
+    }
   };
 
   checkWinningCriteria();
-
-  //   Matter.Pairs.clear();
-  //   const pair = Matter.Pairs.create();
-  //   console.log("pairs", pair);
-
-  //   Matter.Events.on(engine, "collisionEnd", (event) => {
-  //     console.log("collided", Matter.Detector);
-  //   });
 
   // keep the mouse in sync with rendering
   render.mouse = mouse;
