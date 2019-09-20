@@ -2,7 +2,7 @@ const game = () => {
   // initialize
   let canvas = document.getElementById("canvas");
 
-  canvas.width = window.innerWidth ;
+  canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
   const Engine = Matter.Engine,
@@ -88,28 +88,32 @@ const game = () => {
 
   World.add(engine.world, mouseConstraint);
 
-  console.log("eventss", players);
+//   console.log("eventss", players);
+//   console.log(players[0]);
 
   // check winning criteria
   const checkWinningCriteria = () => {
     let playerCount = players.length - 1;
-    let playerPosition = players[0].position;
+    let playerPosition = players[0].vertices[0];
     let loop;
     let temp;
     temp = players;
 
     if (
-      playerPosition.x > endingShack.vertices[0].x &&
+      playerPosition.x - 80 > endingShack.vertices[0].x &&
       playerPosition.y > endingShack.vertices[0].y
     ) {
-      alert("its a wiiiiiiiiiiiiiin", endingShack);
+      if (alert("You Win!")) {
+      } else {
+        location.reload();
+      }
       //   World.remove(engine.world, players[playerCount]);
       players.splice(playerCount, 1);
       cancelAnimationFrame(loop);
     }
 
     if (players.length == 3 || temp !== players) {
-        loop = requestAnimationFrame(checkWinningCriteria);
+      loop = requestAnimationFrame(checkWinningCriteria);
     }
   };
 
