@@ -2,8 +2,8 @@ const game = () => {
   // initialize
   let canvas = document.getElementById("canvas");
 
-  canvas.width = window.innerWidth - 20;
-  canvas.height = window.innerHeight - 20;
+  canvas.width = window.innerWidth ;
+  canvas.height = window.innerHeight;
 
   const Engine = Matter.Engine,
     Render = Matter.Render,

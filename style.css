@@ -1,0 +1,61 @@
+.start{
+    background: white;
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    margin: 10% 25%;
+    z-index: 1;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid black;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.title{
+    text-align: center;
+    margin-top: 10%;
+}
+
+#canvas{
+    position: fixed;
+    opacity: 0.6;
+}
+
+#box{
+    margin-left: 36%;
+}
+button{
+    font-size: 20px;
+    background: none;
+    border: none;
+    box-shadow: 0 0 4px 0px #acacac;
+    padding: 6px 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin-left: 45%;
+}
+button:hover{
+    box-shadow: 0 0 2px 0px #acacac;
+    transition: 200ms ease;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.howTo{
+    text-decoration-line: overline;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.rules{
+    font-size: 15px;
+    margin: 20px;
+    text-align: center;
+
+}
