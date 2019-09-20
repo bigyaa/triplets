@@ -88,8 +88,8 @@ const game = () => {
 
   World.add(engine.world, mouseConstraint);
 
-//   console.log("eventss", players);
-//   console.log(players[0]);
+  //   console.log("eventss", players);
+  //   console.log(players[0]);
 
   // check winning criteria
   const checkWinningCriteria = () => {
@@ -117,8 +117,21 @@ const game = () => {
     }
   };
 
-  checkWinningCriteria();
+  const checkLosingCriteria = () => {
+    let loop2;
 
+    if (players[1].vertices[2].y + 100 < 0) {
+      if (alert("You Lost :(")) {
+      } else {
+        location.reload();
+      }
+      cancelAnimationFrame(loop2);
+    }
+    loop2 = requestAnimationFrame(checkLosingCriteria);
+  };
+
+  checkWinningCriteria();
+  checkLosingCriteria();
   // keep the mouse in sync with rendering
   render.mouse = mouse;
 
